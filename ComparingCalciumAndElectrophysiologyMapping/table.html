@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conduction Velocity Statistics</title>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Mean Velocity (cm/s)</th>
+                <th>Median Velocity (cm/s)</th>
+                <th>Range (cm/s)</th>
+                <th>Number of Vectors</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Image 1</td>
+                <td>Button Projection</td>
+                <td>2.48 ± 1.37</td>
+                <td>2.17</td>
+                <td>0.00 - 7.23</td>
+                <td>668</td>
+            </tr>
+            <tr>
+                <td>Image 2</td>
+                <td>Calcium</td>
+                <td>2.54 ± 1.50</td>
+                <td>2.11</td>
+                <td>0.00 - 7.23</td>
+                <td>671</td>
+            </tr>
+            <tr>
+                <td>Image 3</td>
+                <td>Top Projection</td>
+                <td>2.63 ± 1.19</td>
+                <td>2.48</td>
+                <td>0.24 - 7.23</td>
+                <td>664</td>
+            </tr>
+            <tr>
+                <td>Image 4</td>
+                <td>Mean Projection</td>
+                <td>2.52 ± 1.25</td>
+                <td>2.41</td>
+                <td>0.10 - 7.23</td>
+                <td>658</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Comparison Statistics</h2>
+    <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+        <thead>
+            <tr>
+                <th>Comparison</th>
+                <th>Root Mean Square Error (ms)</th>
+                <th>Mean Absolute Error (ms)</th>
+                <th>Accuracy ±1ms (%)</th>
+                <th>Accuracy ±2ms (%)</th>
+                <th>Accuracy ±5ms (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Button vs Calcium</td>
+                <td>5.64</td>
+                <td>4.57</td>
+                <td>13.7</td>
+                <td>26.5</td>
+                <td>61.8</td>
+            </tr>
+            <tr>
+                <td>Top vs Calcium</td>
+                <td>6.49</td>
+                <td>5.63</td>
+                <td>9.9</td>
+                <td>17.8</td>
+                <td>44.7</td>
+            </tr>
+            <tr>
+                <td>Mean(Button, Top) vs Calcium</td>
+                <td>5.83</td>
+                <td>4.88</td>
+                <td>11.9</td>
+                <td>22.0</td>
+                <td>54.4</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
