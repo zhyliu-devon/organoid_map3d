@@ -1,12 +1,16 @@
+import sys
+import os
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Go up one level from the script directory
-parent_dir = os.path.abspath(os.path.join(script_dir, "../.."))
+parent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+print(parent_dir)
 sys.path.append(os.path.abspath(parent_dir))
 
 configurations = [
     {
         "data_path": os.path.join(
+                            parent_dir,
                             "ExampleData",
                             "FY CO 05062024 Si 500 micron unfolded_240515_141638.rhs"
                             ),
@@ -19,6 +23,7 @@ configurations = [
     },
     {
         "data_path": os.path.join(
+                            parent_dir,
                             "ExampleData",
                             "JK CO6 day after calcium imaging_240522_124841.rhs"
                             ),
@@ -30,12 +35,11 @@ configurations = [
         "flatdata": 0
     }
 ]
-import sys
-import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-from organoidContour import preprocessing
+from organoid_contour import preprocessing
 import pandas as pd
 
 
