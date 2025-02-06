@@ -263,7 +263,7 @@ if __name__ == "__main__":
         for channel, snr in results.items(): 
             excel_data.append({ 
                 'Channel': channel, 
-                'SNR': snr['SNR']  # Updated to use single SNR value
+                'SNR': snr['SNR']  
             }) 
 
         # Create DataFrame 
@@ -278,7 +278,7 @@ if __name__ == "__main__":
 
         # Print results to console 
         for channel, snr in results.items(): 
-            print(f"Channel {channel}: SNR = {snr['SNR']:.2f}")  # Updated to show single SNR value
+            print(f"Channel {channel}: SNR = {snr['SNR']:.2f}")  
 
         print(f"Finished processing {base_filename}") 
         print("-" * 50)

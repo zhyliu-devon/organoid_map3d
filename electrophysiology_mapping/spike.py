@@ -257,7 +257,29 @@ def detect_peak(x, sd=2, multi = 1):
     return peaks
 
 def find_peak_based_on_reference_channel(data, reference_index, max = [1,1,-1,1,1,1,1,1,-1,-1,1,1], peak_range = (200,200), sd=2, multi = 1, reference_peak = None):
-    # In shape of #channels * # peaks
+    """Find peaks in multiple channels based on a reference channel's peaks.
+
+    Args:
+        data (numpy.ndarray): Multi-channel time series data with shape (num_channels, time_points).
+        reference_index (int): Index of the reference channel to use for initial peak detection.
+        max (list, optional): List indicating peak direction for each channel (1 for maximum, -1 for minimum). 
+            Defaults to [1,1,-1,1,1,1,1,1,-1,-1,1,1].
+        peak_range (tuple, optional): Search window around reference peaks (samples_before, samples_after). 
+            Defaults to (200,200).
+        sd (int, optional): Standard deviation threshold for peak detection. Defaults to 2.
+        multi (int, optional): Multiplier for peak detection threshold. Defaults to 1.
+        reference_peak (numpy.ndarray, optional): Pre-defined reference peaks to use instead of detecting them. 
+            Defaults to None.
+
+    Returns:
+        numpy.ndarray: Array of detected peaks with shape (num_channels, num_peaks) where each element 
+            represents the time index of the peak in that channel.
+
+    Notes:
+        For each peak detected in the reference channel, the function searches within the specified 
+        peak_range window in all other channels to find corresponding peaks. The direction of the peak 
+        search (maximum or minimum) is determined by the max parameter for each channel.
+    """
     peaks = detect_peak(data[reference_index], sd=sd, multi = multi)
     #print(peaks)
     if reference_peak is not None:
