@@ -35,20 +35,12 @@ import organoid_map3d as om
 
 ### **Example: Data Processing**
 ```python
-from organoid_map3d.preprocessing import clean_data
-data = clean_data("data_file.csv")
+
 ```
 
 ### **Example: 3D Visualization with VTK**
 ```python
-from organoid_map3d.visualization.vtk_visualization import render_3d_model
-import vtk
 
-sphere = vtk.vtkSphereSource()
-sphere.Update()
-polydata = sphere.GetOutput()
-
-render_3d_model(polydata)
 ```
 
 ---
@@ -60,7 +52,6 @@ render_3d_model(polydata)
 | `preprocessing.py` | Data cleaning and preparation utilities |
 | `map.py` | Spatial mapping functions |
 | `spike.py` | Spike detection and neural data analysis |
-| `triangular.py` | Triangular mesh-related computations |
 | `visualization/` | VTK-based 3D rendering and plotting |
 | `io/` | File handling (including Intan RHS format support) |
 
