@@ -172,5 +172,8 @@ cython_debug/
 
 /Testing/
 
+# Certain data needed to be downloaded manually due to the size restriction
+ExampleData/Comparing_min_1.rhs
+ExampleData/Comparing_min_2.rhs
 
 
