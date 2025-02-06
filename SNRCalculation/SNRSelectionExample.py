@@ -39,7 +39,7 @@ configurations = [
 import numpy as np
 import matplotlib.pyplot as plt
 
-from organoid_contour import preprocessing
+from electrophysiology_mapping import preprocessing
 import pandas as pd
 
 

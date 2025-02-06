@@ -8,4 +8,4 @@ import warnings
 # )
 
 # # Alias the package name so both old and new names work
-sys.modules["organoidContour"] = sys.modules["organoid_contour"] 
+sys.modules["organoidContour"] = sys.modules["electrophysiology_mapping"] 
