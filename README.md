@@ -73,18 +73,9 @@ download_intan_script()
 
 ---
 
-## Development Setup
-### **Create a Virtual Environment (Recommended)**
-```bash
-python -m venv venv
-source venv/bin/activate  # On macOS/Linux
-venv\Scripts\activate  # On Windows
-pip install -r requirements.txt
-```
 
 ### **Run Tests**
-```bash
-pytest tests/
+```
 ```
 
 ---
@@ -97,7 +88,6 @@ If you use `organoid_map3d` in your research, please cite:
 **[Journal Name, Year]**  
 **[DOI/ArXiv Link]**  
 
-Alternatively, use the citation metadata provided in [`CITATION.cff`](CITATION.cff).
 
 ---
 
