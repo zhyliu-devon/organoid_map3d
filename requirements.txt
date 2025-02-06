@@ -1,0 +1,6 @@
+vtk
+Pillow
+scipy
+seaborn
+numpy
+matplotlib
