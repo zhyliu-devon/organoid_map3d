@@ -42,7 +42,7 @@ pip install -r requirements.txt
 ### **4. Handling Intan RHS Data**
 This package requires **`load_intan_rhs_format.py`** from **Intan Technologies**.
 
-1. Download `load_intan_rhs_format.py` from [Intan Technologies](https://intantech.com).
+1. Download `load_intan_rhs_format.py` from [Intan Technologies](https://intantech.com/files/load_intan_rhs_format.zip).
 2. Place the script inside your working directory.
 
 Typical installation time: **~5 minutes**.
@@ -57,13 +57,6 @@ Typical installation time: **~5 minutes**.
 - The script in the folder can be directly executed after installation.
 ---
 
-## **Citation**
-If you use **organoid_map3d** in your research, please cite:
-
-**[Your Paper Title]**  
-**[Your Authors]**  
-**[Journal Name, Year]**  
-[DOI/ArXiv Link]  
 
 ---
 
