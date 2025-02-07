@@ -1,17 +1,17 @@
-# organoid_map3d
+# **organoid_map3d**
 
-## Overview
-**organoid_map3d** is a Python package for **3D mapping of cardiac organoids** with **SciPy, VTK, and Matplotlib** for data processing, visualization, and analysis. This package is designed for reproducible research and scientific computing.
+## **Overview**
+**organoid_map3d** is a Python package for **3D mapping and analysis of cardiac organoids**, leveraging **SciPy, VTK, and Matplotlib** for data processing, visualization, and computational analysis. It is designed for **reproducible research** in bioengineering and scientific computing.
 
-## Features
-- Efficient **3D mapping** with Radial Basis Functions and visualization using VTK.
-- Functions for **electrophysiology data preprocessing**, **calcium data preprocessing** and **Conduction Velocity analysis**.
-- Support for **Intan RHS file formats** for neural data integration.
+## **Features**
+- **3D spatial mapping** using **Radial Basis Functions (RBFs)** and visualization via **VTK**.
+- **Electrophysiology** and **calcium imaging** data preprocessing functions.
+- **Conduction velocity analysis** for cardiac signal propagation.
+- **Integration** with **Intan RHS file formats**.
 
 ---
 
-
-## Installation
+## **Installation**
 
 ### **1. Clone the Repository**
 ```bash
@@ -19,39 +19,69 @@ git clone https://github.com/YOUR_USERNAME/organoid_map3d.git
 cd organoid_map3d
 ```
 
-### **2. Install Software Dependencies**
+### **2. Dependencies**
+The following software versions have been tested with this package:
+
+| Package              | Version   |
+|----------------------|-----------|
+| `load_intan_rhs_format` | September 2023 |
+| `VTK`               | 9.3.0     |
+| `Pillow`            | 10.3.0    |
+| `SciPy`             | 1.10.0    |
+| `Seaborn`           | 0.13.2    |
+| `NumPy`             | 1.23.5    |
+| `Matplotlib`        | 3.8.4     |
+
+No specialized hardware is required.
+
+### **3. Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-## Handling Intan RHS Data
-This package depends on **`load_intan_rhs_format.py`** from Intan Technologies.
+### **4. Handling Intan RHS Data**
+This package requires **`load_intan_rhs_format.py`** from **Intan Technologies**.
 
-### **Option 1: Manually Download It**
 1. Download `load_intan_rhs_format.py` from [Intan Technologies](https://intantech.com).
-2. Place it inside the `organoid_map3d/electrophysiology_mapping` directory.
+2. Place the script inside your working directory.
 
+Typical installation time: **~5 minutes**.
 
+---
 
-## Citation
-If you use `organoid_map3d` in your research, please cite:
+## **Usage**
+### **Demo**
+- The package includes **example scripts** showcasing all data analysis steps.
+- Example data (used in our paper) is provided to reproduce key figures.
+- Due to space limitations, not all raw data is included.
+
+To run a demo:
+```bash
+python examples/demo_script.py
+```
+
+---
+
+## **Citation**
+If you use **organoid_map3d** in your research, please cite:
 
 **[Your Paper Title]**  
 **[Your Authors]**  
 **[Journal Name, Year]**  
-**[DOI/ArXiv Link]**  
-
+[DOI/ArXiv Link]  
 
 ---
 
-## License
+## **License**
 This project is licensed under the **MIT License**. See the [`LICENSE`](LICENSE) file for details.
 
 ---
 
-## Acknowledgments
-- Intan Technologies for `load_intan_rhs_format.py`
-- VTK, SciPy, Seaborn for scientific computing tools
-- Research community for open-source contributions
+## **Acknowledgments**
+- **Intan Technologies** for `load_intan_rhs_format.py`.
+- **VTK, SciPy, Seaborn**, and other open-source tools enabling scientific computing.
+- The **open-source research community** for contributions.
+
+---
 
 
