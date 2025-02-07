@@ -16,7 +16,6 @@ from tqdm import tqdm  # Progress bar for large downloads
 
 # SharePoint direct download link (replace with the correct link)
 file_url = "https://livejohnshopkins-my.sharepoint.com/personal/schoi84_jh_edu/_layouts/15/download.aspx?share=EarUY9jn8txDv-vRWM4aQMABdx-oBAW5DD-SnHxHfVHVTA"
-#url =      "https://livejohnshopkins-my.sharepoint.com/personal/schoi84_jh_edu/_layouts/15/download.aspx?share=EarUY9jn8txDv-vRWM4aQMABdx-oBAW5DD-SnHxHfVHVTA"
 
 # Define parent directory (modify as needed)
 destination_folder = os.path.join(parent_dir, "ExampleData")
