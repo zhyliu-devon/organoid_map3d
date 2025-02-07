@@ -42,8 +42,8 @@ pip install -r requirements.txt
 ### **4. Handling Intan RHS Data**
 This package requires **`load_intan_rhs_format.py`** from **Intan Technologies**.
 
-1. Download `load_intan_rhs_format.py` from [Intan Technologies](https://intantech.com/files/load_intan_rhs_format.zip).
-2. Place the script inside your working directory.
+1. Download `load_intan_rhs_format` from [Intan Technologies](https://intantech.com/files/load_intan_rhs_format.zip).
+2. Place the folder inside your working directory.
 
 Typical installation time: **~5 minutes**.
 
