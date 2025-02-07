@@ -1,7 +1,7 @@
 # **organoid_map3d**
 
 ## **Overview**
-**organoid_map3d** is a Python package for **3D mapping and analysis of cardiac organoids**, leveraging **SciPy, VTK, and Matplotlib** for data processing, visualization, and computational analysis. It is designed for **reproducible research** in bioengineering and scientific computing.
+**organoid_map3d** is a set of Python example code for **3D mapping and analysis of cardiac organoids**, leveraging **SciPy, VTK, and Matplotlib** for data processing, visualization, and computational analysis. It is designed for **reproducible research** in bioengineering and scientific computing.
 
 ## **Features**
 - **3D spatial mapping** using **Radial Basis Functions (RBFs)** and visualization via **VTK**.
