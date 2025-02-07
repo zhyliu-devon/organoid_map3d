@@ -15,7 +15,7 @@
 
 ### **1. Clone the Repository**
 ```bash
-git clone [https://github.com/YOUR_USERNAME/organoid_map3d.git](https://github.com/zhyliu-devon/organoid_map3d)
+git clone https://github.com/zhyliu-devon/organoid_map3d.git
 cd organoid_map3d
 ```
 
