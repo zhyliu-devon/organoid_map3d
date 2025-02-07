@@ -4,7 +4,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Go up one level from the script directory
 parent_dir = os.path.abspath(os.path.join(script_dir, ".."))
-print(parent_dir)
+
 sys.path.append(os.path.abspath(parent_dir))
 
 configurations = [

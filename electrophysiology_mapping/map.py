@@ -1445,8 +1445,38 @@ import os
 import vtk
 import numpy as np
 
-def setup_scene_and_capture(points, us, vs, scale=0.04,rotate_x = 0, rotate_y = 0, rotate_z = 200, radius=0.8, max_cv=None, min_cv=None, texture_file="contour.png"):
-    """Sets up the renderer, renders the window with arrows, rotates, captures screenshots, and saves them to a folder."""
+def setup_scene_and_capture(points, us, vs, scale=0.04,rotate_x = 0, rotate_y = 0, rotate_z = 200, radius=0.8, max_cv=None, min_cv=None, 
+                            CV_threshold = 80 , #This is for JKCO6
+                            projection = False,ViewingFromTop = False, directory = "sphere_vector", texture_file="contour.png", auto_close = True):
+    """Sets up a 3D visualization scene with arrows on a sphere, captures rotating views, and saves them as images.
+
+    Args:
+        points (list): List of (longitude, latitude) tuples representing points on the sphere.
+        us (list): List of x-components of the vectors at each point.
+        vs (list): List of y-components of the vectors at each point.
+        scale (float, optional): Scaling factor for the arrows. Defaults to 0.04.
+        rotate_x (int, optional): Rotation angle around x-axis in degrees. Defaults to 0.
+        rotate_y (int, optional): Rotation angle around y-axis in degrees. Defaults to 0.
+        rotate_z (int, optional): Rotation angle around z-axis in degrees. Defaults to 200.
+        radius (float, optional): Radius of the sphere. Defaults to 0.8.
+        max_cv (float, optional): Maximum conduction velocity for color normalization. Defaults to None.
+        min_cv (float, optional): Minimum conduction velocity for color normalization. Defaults to None.
+        CV_threshold (int, optional): Threshold for conduction velocity visualization. Defaults to 80.
+        projection (bool, optional): Whether to use projection mode. Defaults to False.
+        ViewingFromTop (bool, optional): Whether to view the sphere from top. Defaults to False.
+        directory (str, optional): Directory to save captured images. Defaults to "sphere_vector".
+        texture_file (str, optional): Path to texture file for the sphere. Defaults to "contour.png".
+        auto_close (bool, optional): Whether to automatically close the window after capture. Defaults to True.
+
+    Returns:
+        None
+
+    Note:
+        - Creates 36 images rotating the view by 10 degrees each time
+        - Images are saved as 'angle_[0-35].png' in the specified directory
+        - Uses VTK for rendering and PIL for image processing
+        - Arrow colors are determined by vector magnitude using jet colormap
+    """
     # Create renderer and render window
     renderer = vtk.vtkRenderer()
     render_window = vtk.vtkRenderWindow()
@@ -1459,9 +1489,19 @@ def setup_scene_and_capture(points, us, vs, scale=0.04,rotate_x = 0, rotate_y = 
     # Setup camera
     camera = renderer.GetActiveCamera()
     camera.ParallelProjectionOn()
-    camera.SetPosition(10, 0, 0)
+    if(ViewingFromTop):
+        camera.SetPosition(0, 0, 5)
+        camera.SetFocalPoint(0, 0, 0)
+        camera.SetViewUp(-1, 0, 0)
+
+
+    camera.SetPosition(5, 0, 0)
     camera.SetFocalPoint(0, 0, 0)
     camera.SetViewUp(0, 0, 1)
+    if(projection):
+        renderer.AutomaticLightCreationOff()
+        renderer.UseShadowsOff()
+        renderer.SetAmbient(1.0, 1.0, 1.0)
 
     # Render objects
     create_sphere(renderer, radius=radius, resolution=100, rotate_x=rotate_x, rotate_y=rotate_y, rotate_z=rotate_z, texture_file=texture_file)
@@ -1471,14 +1511,21 @@ def setup_scene_and_capture(points, us, vs, scale=0.04,rotate_x = 0, rotate_y = 
         east = east_vector(position, north)
         direction = us[idx] * east + vs[idx] * north
         amplitude = np.sqrt(np.sum(us[idx]**2 + vs[idx]**2))
-        normalized_intensity = (amplitude - min_cv) / (max_cv - min_cv) if max_cv and min_cv else (amplitude - 10) / (90)
-        normalized_intensity = np.clip(normalized_intensity, 0, 1)
-        color = jet_colormap(normalized_intensity)
+       
+        if CV_threshold:
+            amplitude = min(amplitude, CV_threshold)
+            
+            color_intensity = amplitude / CV_threshold
+            color_intensity = np.clip(color_intensity, 0, 1)
+            color = jet_colormap(color_intensity)  
+        else:
+            normalized_intensity = (amplitude - min_cv) / (max_cv - min_cv) if max_cv and min_cv else (amplitude - 10) / (90)
+            normalized_intensity = np.clip(normalized_intensity, 0, 1)
+            color = jet_colormap(normalized_intensity)
         direction = direction / np.linalg.norm(direction)
         add_arrow(renderer, position, direction, scale * np.log(np.log(amplitude) + 5), color)
 
     # Create directory if it doesn't exist
-    directory = "sphere_vector"
     if not os.path.exists(directory):
         os.makedirs(directory)
 
@@ -1498,10 +1545,16 @@ def setup_scene_and_capture(points, us, vs, scale=0.04,rotate_x = 0, rotate_y = 
         w2if.Modified()  # Update the filter to reflect new scene
         w2if.Update()  # Ensure the filter processes the latest image
         writer.SetInputConnection(w2if.GetOutputPort())
-        writer.SetFileName(f"{directory}/screenshot_{i}.png")
+        writer.SetFileName(f"{directory}/angle_{i}.png")
         writer.Write()
 
-    render_window_interactor.Start()
+
+    # Finalize and close the window automatically
+    if(auto_close):
+        render_window.Finalize()
+        render_window_interactor.TerminateApp()
+    else:
+        render_window_interactor.Start()
 
 
 
