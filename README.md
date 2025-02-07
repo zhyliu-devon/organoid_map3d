@@ -54,12 +54,7 @@ Typical installation time: **~5 minutes**.
 - The package includes **example scripts** showcasing all data analysis steps.
 - Example data (used in our paper) is provided to reproduce key figures.
 - Due to space limitations, not all raw data is included.
-
-To run a demo:
-```bash
-python examples/demo_script.py
-```
-
+- The script in the folder can be directly executed after installation.
 ---
 
 ## **Citation**
