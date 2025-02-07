@@ -171,8 +171,8 @@ def manual_lat_selection(data, spike_index, fs, save_path):
     plt.figure(figsize=(12, 6))
     time = (np.arange(len(data)) - spike_index) / fs * 1000
     plt.plot(time, data)
-    plt.title(f"Click LEFT then RIGHT boundary for LAT search window (Spike {spike_index})")
-    plt.xlabel("Time from spike (ms)")
+    plt.title(f"Click LEFT then RIGHT boundary for LAT search window (Beat {spike_index})")
+    plt.xlabel("Time from Beat (ms)")
     plt.ylabel("Amplitude (µV)")
     
     points = plt.ginput(2, timeout=-1)
@@ -321,7 +321,7 @@ def visualize_spike_details(data, spike_info, fs, intan_channel, condition, save
     
     
     
-    ax.set_title(f'{condition} - Intan Channel {intan_channel} - Spike at {spike/fs:.3f}s\n'
+    ax.set_title(f'{condition} - Intan Channel {intan_channel} - Beat at {spike/fs:.3f}s\n'
                  f'FPD Window: {fpd_window}, Find Max: {find_max}')
     ax.set_xlabel('Time (ms)')
     ax.set_ylabel('Amplitude (µV)')
@@ -331,7 +331,7 @@ def visualize_spike_details(data, spike_info, fs, intan_channel, condition, save
     
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
-    plt.savefig(os.path.join(save_dir, f'{condition}_intan_channel_{intan_channel}_spike_{spike}.png'))
+    plt.savefig(os.path.join(save_dir, f'{condition}_intan_channel_{intan_channel}_beat_{spike}.png'))
     plt.close()
 
 
@@ -357,19 +357,19 @@ def process_and_visualize_detailed(data, fs, condition, save_dir, custom_setting
         spike_analysis = analyze_spikes(channel_data, spikes, fs, fpd_window, find_max)
         
         print(f"Condition: {condition}, Intan Channel: {intan_channel}")
-        print(f"Number of spikes detected: {len(spikes)}")
+        print(f"Number of beats detected: {len(spikes)}")
         print(f"FPD Window: {fpd_window}, Find Max: {find_max}")
         print(f"Detect Above: {detect_above}, Threshold Factor: {threshold_factor}")
         
         # Visualize spike detection results
         visualize_spike_detection(channel_data, spikes, fs, intan_channel, condition,
-                                  os.path.join(save_dir, 'spike_detection_plots'),
+                                  os.path.join(save_dir, 'beat_detection_plots'),
                                   detect_above, threshold_factor)
         
         # Visualize details for the first 3 spikes (or fewer if less than 3 spikes)
         for j, spike_info in enumerate(spike_analysis):
             visualize_spike_details(channel_data, spike_info, fs, intan_channel, condition, 
-                                    os.path.join(save_dir, 'spike_details_plots'),
+                                    os.path.join(save_dir, 'beat_details_plots'),
                                     fpd_window, find_max)
     
 
@@ -418,13 +418,13 @@ def process_and_visualize_detailed(data, fs, condition, save_dir, custom_setting
         
         # Visualize spike detection results
         visualize_spike_detection(channel_data, spikes, fs, intan_channel, condition,
-                                  os.path.join(save_dir, 'spike_detection_plots'),
+                                  os.path.join(save_dir, 'beat_detection_plots'),
                                   detect_above, threshold_factor)
         
         # Visualize details for the first 3 spikes (or fewer if less than 3 spikes)
         for j, spike_info in enumerate(spike_analysis):
             visualize_spike_details(channel_data, spike_info, fs, intan_channel, condition, 
-                                    os.path.join(save_dir, 'spike_details_plots'),
+                                    os.path.join(save_dir, 'beat_details_plots'),
                                     fpd_window, find_max)
 
 
